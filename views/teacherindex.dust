@@ -1,0 +1,214 @@
+{>"teacherlayout" /}
+
+{<body}
+
+<br>
+<div class="d-flex mb-auto">
+    <input type="text" id="myInput" data-id="namesearch">
+    <button type="button" id="myBtn">Show Value</button>
+    <div class="align-self-end ml-auto">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+            <i class="far fa-plus-square"></i>
+        </button>
+    </div>
+    
+</div>
+
+<br>
+    
+    <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">SSN</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Office</th>
+                    <th scope="col">Birth Date</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Speciality</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+        {#teachers}
+                <tbody>
+                    <tr>
+                    <th scope="row">{ssn}</th>
+                    <td>{name}</td>
+                    <td>{address}</td>
+                    <td>{office}</td>
+                    <td>{bdate}</td>
+                    <td>{phone}</td>
+                    <td>{sex}</td>
+                    <td>{rank}</td>
+                    <td>{speciality}</td>
+                    <td>{department_id}</td>
+                    <td><img src="{photo}" alt=""></td>
+
+                    <td>
+                        <button class="btn btn-default edit" 
+                        data-toggle="modal" 
+                        data-target="#editFormModal"
+                        data-ssn="{ssn}"
+                        data-name="{name}"
+                        data-address="{address}"
+                        data-office="{office}"
+                        data-bdate="{bdate}"
+                        data-phone="{phone}"
+                        data-gender="{sex}"
+                        data-rank="{rank}"
+                        data-speciality="{speciality}"
+                        data-dept_id="{department_id}"
+                        data-photo="{photo}">
+                            <i class="far fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger delete-record" data-id="{ssn}">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                    </tr>
+                </tbody>
+                </body>   
+        {/teachers}
+
+    <!--add form-->
+
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/teachers/add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Add Record</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>SSN</label>
+                            <input type="text" class="form-control" name="ssn" />
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" name="address" />
+                        </div>
+                        <div class="form-group">
+                            <label>Office</label>
+                            <input type="text" class="form-control" name="office" />
+                        </div>
+                        <div class="form-group">
+                            <label>Birth Date (YYYY-MM-DD)</label>
+                            <input type="text" class="form-control" name="bdate" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" name="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <input type="text" class="form-control" name="gender" />
+                        </div>
+                        <div class="form-group">
+                            <label>Rank</label>
+                            <input type="text" class="form-control" name="rank" />
+                        </div>
+                        <div class="form-group">
+                            <label>Speciality</label>
+                            <input type="text" class="form-control" name="speciality" />
+                        </div>
+                        <div class="form-group">
+                            <label>Department_id</label>
+                            <input type="text" class="form-control" name="department_id" />
+                        </div>
+                        <div class="form-group">
+                            <label>Photo</label>
+                            <input type="text" class="form-control" name="photo" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" value="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+         <!--update form-->
+
+    <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/teachers/edit">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Update Record</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>SSN</label>
+                            <input type="text" class="form-control" name="ssn" id="edit-form-ssn"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" id="edit-form-name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" name="address" id="edit-form-address"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Office</label>
+                            <input type="text" class="form-control" name="office" id="edit-form-office"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Birth Date (YYYY-MM-DD)</label>
+                            <input type="text" class="form-control" name="bdate" id="edit-form-bdate"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" name="phone" id="edit-form-phone"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <input type="text" class="form-control" name="gender" id="edit-form-gender"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Rank</label>
+                            <input type="text" class="form-control" name="rank" id="edit-form-rank"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Speciality</label>
+                            <input type="text" class="form-control" name="speciality" id="edit-form-speciality"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Department_id</label>
+                            <input type="text" class="form-control" name="department_id" id="edit-form-dept_id"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Photo</label>
+                            <input type="text" class="form-control" name="photo" id="edit-form-photo"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+
+
+
+{/body}

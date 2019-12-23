@@ -1,0 +1,140 @@
+{>"courselayout" /}
+
+{<body}
+<br>
+<div class="d-flex mb-auto">
+    <div class="align-self-end ml-auto">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+            <i class="far fa-plus-square"></i>
+        </button>
+    </div>
+    
+</div>
+
+<br>
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Year</th>
+                <th scope="col">Department</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+    {#course}
+            <tbody>
+                <tr>
+                <th scope="row">{id}</th>
+                <td>{name}</td>
+                <td>{semester}</td>
+                <td>{year}</td>
+                <td>{department_id}</td>
+                <td>
+                    <button class="btn btn-default edit" 
+                    data-toggle="modal" 
+                    data-target="#editFormModal"
+                    data-id="{id}"
+                    data-name="{name}"
+                    data-semester="{semester}"
+                    data-year="{year}"
+                    data-dept_id="{department_id}">
+                        <i class="far fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger delete-record" data-id="{id}">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </body>   
+    {/course}
+
+    <!--add form-->
+
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/course/add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Add Course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Course ID</label>
+                            <input type="text" class="form-control" name="id" />
+                        </div>
+                        <div class="form-group">
+                            <label>Course Name</label>
+                            <input type="text" class="form-control" name="name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Semester</label>
+                            <input type="text" class="form-control" name="semester" />
+                        </div>
+                        <div class="form-group">
+                            <label>Year</label>
+                            <input type="text" class="form-control" name="year" />
+                        </div>
+                        <div class="form-group">
+                            <label>Department ID</label>
+                            <input type="text" class="form-control" name="department_id" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+         <!--update form-->
+
+    <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/course/edit">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Update Course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Course ID</label>
+                            <input type="text" class="form-control" name="id" id="edit-form-id"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Course Name</label>
+                            <input type="text" class="form-control" name="name" id="edit-form-name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Semester</label>
+                            <input type="text" class="form-control" name="semester" id="edit-form-semester"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Year</label>
+                            <input type="text" class="form-control" name="year" id="edit-form-year"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Department ID</label>
+                            <input type="text" class="form-control" name="department_id" id="edit-form-department_id"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+{/body}

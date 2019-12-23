@@ -1,0 +1,142 @@
+{>"layout" /}
+
+{<body}
+
+<br>
+    <div class="d-flex mb-auto">
+        <div class="align-self-end ml-auto">
+            <button type="button" class="btn btn-primary" id="addbutton" data-toggle="modal" data-target="#formModal">
+                <i class="far fa-plus-square"></i>
+            </button>
+        </div>
+        
+    </div>
+    
+    <br>
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Chairman</th>
+                <th scope="col">Chairman Start Date</th>
+                <th scope="col">Location</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+    {#departments}
+            <tbody>
+                <tr>
+                <th scope="row">{id}</th>
+                <td>{name}</td>
+                <td>{chairman}</td>
+                <td>{chairman_start_date}</td>
+                <td>{location}</td>
+                <td>
+                    <button class="btn btn-default edit" 
+                    data-toggle="modal" 
+                    data-target="#editFormModal"
+                    data-id="{id}"
+                    data-name="{name}"
+                    data-chairname="{chairman}"
+                    data-date="{chairman_start_date}"
+                    data-location="{location}">
+                        <i class="far fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger delete-record" data-id="{id}">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </body>   
+    {/departments}
+
+    <!--add form-->
+
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" action="/add">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Add Department</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" name="id" />
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Chairman Name</label>
+                        <input type="text" class="form-control" name="chairname" />
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date (YYYY-MM-DD)</label>
+                        <input type="text" class="form-control" name="date" />
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" class="form-control" name="location" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Save"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <!--update form-->
+
+    <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/edit">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Update Department</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id" id="edit-form-id"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" id="edit-form-name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Chairman Name</label>
+                            <input type="text" class="form-control" name="chairname" id="edit-form-chairname"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date (YYYY-MM-DD)</label>
+                            <input type="text" class="form-control" name="date" id="edit-form-date"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" class="form-control" name="location" id="edit-form-location"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+{/body}
+

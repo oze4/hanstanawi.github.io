@@ -1,0 +1,36 @@
+body{
+    background:#f9f9f9;
+    font-size: 13.5px;
+}
+
+table{
+    width: 50%;
+}
+
+img{
+    width:100px;
+}
+
+#mainNavbar{
+    background-color:#0876d1;
+}
+
+#mainNavbar .nav-link{
+    color: white;
+}
+
+#mainNavbar .nav-link:hover {
+    color:  white;
+}
+
+#mainNavbar .navbar-brand{
+    color: white;
+    font-size: 1.5 rem;
+    font-weight: 100;
+}
+
+thead{
+    background-color: #0876d1;
+    color: white;
+}
+

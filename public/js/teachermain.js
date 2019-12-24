@@ -17,21 +17,28 @@ $(document).ready(function(){
         }
     });
 
-    $("#myBtn").click(function(){
-        var str = $("#myInput").val();
-        var url = '/teachers/'+ str;
+    $("#teacher-search-button").click(function(){
+        var str = $("#teacher-search-input").val();
+        /**
+         * Had to change the URL to match the route:
+         * '/teachers/' + str;   ..was changed to.. '/teachers/search/' + str;
+         */
+        var url = '/teachers/search/'+ str;
+        window.location.href = url;
+        /*
         if(confirm('Search Record?')){
             $.ajax({
                 url: url,
                 success: function(result){
-                    console.log('Searching');
-                    window.location.href='/teachers/';
+                    console.log(result);
+                    window.location.href=url;
                 },
                 error: function(err){
                     console.log(err);
                 }
             });
         }
+        */
     });
   
 

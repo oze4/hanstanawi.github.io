@@ -4,8 +4,8 @@
 
 <br>
 <div class="d-flex mb-auto">
-    <input type="text" id="myInput" data-id="namesearch">
-    <button type="button" id="myBtn">Show Value</button>
+    <input type="text" id="teacher-search-input" data-id="namesearch">
+    <button type="button" id="teacher-search-button">Show Value</button>
     <div class="align-self-end ml-auto">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
             <i class="far fa-plus-square"></i>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input class="btn btn-primary" value="Save"/>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
                     </div>
                 </form>
             </div>

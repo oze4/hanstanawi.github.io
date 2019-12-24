@@ -10,12 +10,10 @@ const config = {
     user: 'postgres',
     database: 'university',
     password: '188188',
-    port: 5432                  
+    port: 32768                  
 };
 
 const pool = new pg.Pool(config);
-
-
 
 // const connect = "postgres://hanstanawi:188188@localhost/university"
 
@@ -25,7 +23,6 @@ app.set('view engine', 'dust');
 app.set('views', __dirname + '/views');
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -150,7 +147,6 @@ app.get('/teachers', function(req, res){
             if(err){
                 return console.error('error running query', err)
             }
-            
             res.render('teacherindex', {teachers: result.rows});
             done();
         });
@@ -178,17 +174,23 @@ app.get('/teachers/search/:str', function(req, res){
     var namesearch = req.params.str;
     pool.connect(function(err, client, done){
         if(err) {
-            return console.error("error", err);
+            console.log("error", err);
+            res.status(500).send("Error");
+            //return console.error("error", err);
+        } else {
+            client.query('SELECT * FROM teachers WHERE LOWER(name) like LOWER($1)', [`%${namesearch}%`], function(err, result){
+                if(err) {
+                    console.error('error running query', err);
+                    res.status(500).send("Error running query")
+                }
+                if (result.rows.length > 0) {
+                    res.render('teacherindex', {teachers: result.rows});
+                } else {
+                    res.render('teacherindex', {teachers: [{ssn: "NO RESULTS FOUND"}]});
+                }
+                done();
+            });
         }
-        client.query('SELECT * FROM teachers WHERE name = $1', [namesearch], function(err, result){
-            
-            if(err){
-                return console.error('error running query', err)
-            }
-            res.render('teacherindex', {teachers: result.rows});
-            done();
-            res.sendStatus(500);
-        });
     });
 });
 

@@ -10,7 +10,7 @@ const config = {
     user: 'postgres',
     database: 'university',
     password: '188188',
-    port: 32768                  
+    port: 32768, // <<<----------------- CHANGE THIS BACK TO WHAT YOU HAD IT AS BEFORE                  
 };
 
 const pool = new pg.Pool(config);

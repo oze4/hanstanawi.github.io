@@ -186,7 +186,17 @@ app.get('/teachers/search/:str', function(req, res){
                 if (result.rows.length > 0) {
                     res.render('teacherindex', {teachers: result.rows});
                 } else {
+                    // see comments below this line..
                     res.render('teacherindex', {teachers: [{ssn: "NO RESULTS FOUND"}]});
+                    /** 
+                     * THIS IS FOR NO RESULTS FOUND - INSTEAD OF JUST DISPLAYING AN EMPTY TABLE
+                     *
+                     * ******* THIS IS EXTREMELY HACKY ********
+                     * ******* YOU SHOULD PROB CHANGE  ********
+                     * ******* THIS TO SOMETHING MORE  ********
+                     * *******   'OFFICIAL' FOR NO     ********
+                     * *******    RESULTS FOUND!       ********
+                     */
                 }
                 done();
             });

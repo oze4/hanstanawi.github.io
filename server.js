@@ -153,6 +153,7 @@ app.get('/teachers', function(req, res){
     });
 });
 
+// YOU SHOULD BE ABLE TO REMOVE THIS ROUTE
 // app.get('/teachers/:str', (req,res)=>{
 //     let namesearch = req.params.str;
 //     pool.connect((err, client, done) => {
@@ -244,6 +245,8 @@ app.post('/teachers/edit', function(req, res){
     });
 });
 
+
+/*  YOU SHOULD NOT NEED TO USE THIS ROUTE
 app.get('/teachers/:id', function(req, res){
     pool.connect(function(err, client, done){
         if(err) {
@@ -259,7 +262,9 @@ app.get('/teachers/:id', function(req, res){
         }); 
     });
 });
+*/
 
+// YOU SHOULD NOT NEED THIS ROUTE EITHER:
 // app.get('/teachers/searchresult', function(req, res){
 //     pool.connect(function(err, client, done){
 //         if(err) {
